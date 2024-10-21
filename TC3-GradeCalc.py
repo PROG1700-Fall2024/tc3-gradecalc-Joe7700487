@@ -17,13 +17,50 @@
 def main():
     # YOUR CODE STARTS HERE, each line must be indented (one tab)
 
+    # greeting and init variables from user input
+    print("Grade Point Calculator")
+    grade = input("Please enter a letter grade (A, B, C, D, F): ").upper()
+    modifier = input("Please enter a modifier (+, -, or nothing): ")
 
+    # assign the correct number value for each possible letter value
+    if (grade == "A"):
+        grade = 4
+    elif (grade == "B"):
+        grade = 3
+    elif (grade == "C"):
+        grade = 2
+    elif (grade == "D"):
+        grade = 1
+    elif (grade == "F"):
+        grade = 0
+    # if the user doesnt pick a valid grade letter, print error message and end the program
+    else:
+        print("Invalid letter grade. Please try again.")
+        return
 
+    # add/subtract 0.3 depending on the modifier
+    if (modifier == "+"):
+        grade = grade + 0.3
+    elif (modifier == "-"):
+        grade = grade - 0.3
+    # if no modifier was given, do nothing
+    elif (modifier == ""):
+        pass
+    # if an invalid modifier was given, print error message and end the program
+    else:
+        print("Invalid modifier. Please try again.")
+        return
+    
+    # if the grade is greater than 4 set it equal to 4
+    if (grade >= 4):
+        grade = 4
+    # if the grade is 0 set it equal to 0 regardless of the modifier
+    # 0.7 is the lowest possible non 0 grade so anything lower than that should be a 0
+    elif (grade < 0.7):
+        grade = 0
 
-
-
-
+    # print the final grade
+    print("The numeric value is: {0:.1f} \n".format(grade))
 
     # YOUR CODE ENDS HERE
-
 main()
